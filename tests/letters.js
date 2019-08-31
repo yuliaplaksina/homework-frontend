@@ -1,6 +1,17 @@
 'use strict';
 
 QUnit.module('Тестируем функцию letters', function () {
+	QUnit.test('Работет корректно с суррогатными парами', function (assert) {
+		assert.strictEqual(letters('😂😂😂'), '');
+		assert.strictEqual(letters('😍😊1😊😍'), '1');
+
+		assert.strictEqual(letters('😂😂1😂', true), '😂1');
+		assert.strictEqual(letters('😍😊1😊😍', true), '😍😊1');
+
+		assert.strictEqual(letters('😂😂1😂', false), '1😂');
+		assert.strictEqual(letters('😍😊1😊😍', false), '1😊😍');
+	});
+
 	QUnit.test('Оставляет без изменений строки, где все символы уникальны', function (assert) {
 		assert.strictEqual(letters('1234'), '1234');
 		assert.strictEqual(letters('abcd'), 'abcd');
