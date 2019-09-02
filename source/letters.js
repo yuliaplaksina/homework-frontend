@@ -1,5 +1,12 @@
 'use strict';
 
+/**
+ * Удаляет повторяющиеся символы в строке
+ *
+ * @param {string} string - начальная строка, которую необходимо изменить
+ * @param {boolean} mode - "режим" работы функции (true - оставляет первую, false - оставляет последнюю, без аргумента - удаляет все
+ * @returns {string}
+ */
 function letters(string, mode) {
     let newString;
 
